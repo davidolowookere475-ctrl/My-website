@@ -1,47 +1,570 @@
-. 
-spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #667eea; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 12px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        
-        .result { display: none; padding: 16px; border-radius: 16px; margin: 16px 0; }
-        .result.success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .result.error { display: block; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        
-        .features-section { background: white; border-radius: 28px; padding: 48px 32px; margin: 40px 0; text-align: center; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 32px; }
-        .feature-card i { font-size: 2rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
-        .feature-card h4 { margin-bottom: 8px; }
-        .feature-card p { color: #666; font-size: 0.85rem; }
-        
-        .testimonials { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 28px; padding: 48px 32px; margin: 40px 0; color: white; text-align: center; }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 32px; }
-        .testimonial-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px; border-radius: 20px; text-align: left; }
-        .testimonial-card .rating { color: #ffc107; margin-bottom: 12px; letter-spacing: 2px; }
-        .testimonial-card p { font-style: italic; margin-bottom: 16px; line-height: 1.5; }
-        .testimonial-card .customer { display: flex; align-items: center; gap: 12px; }
-        .testimonial-card .customer .avatar { width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        
-        footer { background: #1a1a2e; color: white; text-align: center; padding: 40px 0; margin-top: 60px; border-radius: 30px 30px 0 0; }
-        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 30px; }
-        .social-links { display: flex; gap: 16px; }
-        .social-links a { color: white; background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .social-links a:hover { background: #667eea; transform: translateY(-3px); }
-        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; font-size: 0.85rem; color: #888; }
-        
-        .admin-btn { position: fixed; bottom: 24px; right: 24px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s; z-index: 100; }
-        .admin-btn:hover { transform: scale(1.1); }
-        
-        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .form-group.full-width { grid-column: span 1; } .package-summary { flex-direction: column; text-align: center; } header h1 { font-size: 1.6rem; } .container { padding: 0 16px; } .package-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .package { padding: 16px; } .package h3 { font-size: 1rem; } .package .price { font-size: 1.3rem; } }
-        
-        .profit-info { display: none; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Signal Strength Inc - DStv & GOtv Subscriptions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fa;
+            color: #1a1a2e;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .trust-badge {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .trust-badge span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 16px;
+            border-radius: 50px;
+        }
+
+        /* Service Selector */
+        .service-selector {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: -30px 0 40px;
+        }
+
+        .service-selector button {
+            padding: 14px 36px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            background: white;
+            color: #667eea;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-selector button.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Package Grid */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .package {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #e8e8f0;
+            position: relative;
+        }
+
+        .package:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(102,126,234,0.15);
+        }
+
+        .package.selected {
+            border: 2px solid #667eea;
+            background: #f8f9ff;
+        }
+
+        .package-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .package h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .package .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #667eea;
+            margin: 16px 0;
+        }
+
+        .package .features {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        .package .features li {
+            padding: 6px 0;
+            color: #555;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .package .features li i {
+            color: #28a745;
+            font-size: 0.8rem;
+        }
+
+        .package button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .package button:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Order Form */
+        .order-form {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            margin: 30px 0 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .order-form h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group label i {
+            margin-right: 8px;
+            color: #667eea;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e8;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .package-summary {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .package-summary .amount {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(40,167,69,0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #fff8e1;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 45px;
+            height: 45px;
+            border: 4px solid #e0e0e8;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Result Messages */
+        .result {
+            display: none;
+            padding: 16px;
+            border-radius: 16px;
+            margin: 16px 0;
+        }
+
+        .result.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .result.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Features */
+        .features-section {
+            background: white;
+            border-radius: 28px;
+            padding: 48px 32px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .features-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 32px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 28px;
+            padding: 48px 32px;
+            margin: 50px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .testimonials h3 {
+            font-size: 1.6rem;
+            margin-bottom: 32px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 20px;
+            text-align: left;
+        }
+
+        .rating {
+            color: #ffc107;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .customer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .rating-summary {
+            margin-top: 24px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px 0;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            color: white;
+            background: rgba(255,255,255,0.1);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+        }
+
+        /* Admin Button */
+        .admin-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .package-summary {
+                flex-direction: column;
+                text-align: center;
+            }
+            header h1 {
+                font-size: 1.6rem;
+            }
+            .package-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .package {
+                padding: 16px;
+            }
+            .package h3 {
+                font-size: 1rem;
+            }
+            .package .price {
+                font-size: 1.3rem;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+            .trust-badge {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container">
-        <div class="logo">
-            <i class="fas fa-signal"></i> <i class="fas fa-tv"></i>
-        </div>
         <h1>SIGNAL STRENGTH INC</h1>
         <p>Premium DStv & GOtv Subscription Services</p>
         <div class="trust-badge">
@@ -54,12 +577,8 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
 
 <main class="container">
     <div class="service-selector">
-        <button id="dstvBtn" class="active">
-            <i class="fas fa-satellite-dish"></i> DStv
-        </button>
-        <button id="gotvBtn">
-            <i class="fas fa-tv"></i> GOtv
-        </button>
+        <button id="dstvBtn" class="active">DStv</button>
+        <button id="gotvBtn">GOtv</button>
     </div>
 
     <!-- DStv Packages -->
@@ -72,7 +591,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
                 <ul class="features">
                     <li><i class="fas fa-check-circle"></i> 200+ Channels</li>
                     <li><i class="fas fa-check-circle"></i> All Sports & Movies</li>
-                    <li><i class="fas fa-check-circle"></i> 4K Ultra HD Quality</li>
+                    <li><i class="fas fa-check-circle"></i> 4K Ultra HD</li>
                 </ul>
                 <button>Select Plan</button>
             </div>
@@ -94,7 +613,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
                 <ul class="features">
                     <li><i class="fas fa-check-circle"></i> 120+ Channels</li>
                     <li><i class="fas fa-check-circle"></i> Entertainment & News</li>
-                    <li><i class="fas fa-check-circle"></i> Best Value Plan</li>
+                    <li><i class="fas fa-check-circle"></i> Best Value</li>
                 </ul>
                 <button>Select Plan</button>
             </div>
@@ -121,13 +640,13 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
                 <button>Select Plan</button>
             </div>
             <div class="package" data-service="dstv" data-code="YDVB" data-price="4500" data-vtpass-price="1500" data-name="Yanga" data-profit="3000">
-                <div class="package-icon"><i class="fas fa-bolt"></i></div>
+                <div class="package-icon"><i class="fas fa-fire"></i></div>
                 <h3>Yanga</h3>
                 <div class="price">₦4,500</div>
                 <ul class="features">
                     <li><i class="fas fa-check-circle"></i> 30+ Channels</li>
                     <li><i class="fas fa-check-circle"></i> Popular Local</li>
-                    <li><i class="fas fa-check-circle"></i> Best Budget Plan</li>
+                    <li><i class="fas fa-check-circle"></i> Best Budget</li>
                 </ul>
                 <button>Select Plan</button>
             </div>
@@ -212,7 +731,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
                 </div>
             </div>
             <button type="submit" class="submit-btn" id="submitBtn">
-                <i class="fas fa-credit-card"></i> Proceed to Payment
+                Proceed to Payment <i class="fas fa-arrow-right"></i>
             </button>
         </form>
         <p style="text-align: center; margin-top: 20px; font-size: 12px; color: #888;">
@@ -236,7 +755,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
             </div>
             <div class="feature-card">
                 <i class="fas fa-clock"></i>
-                <h4>24/7 Customer Support</h4>
+                <h4>24/7 Support</h4>
                 <p>Dedicated support team always available</p>
             </div>
             <div class="feature-card">
@@ -253,7 +772,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
         <div class="testimonial-grid">
             <div class="testimonial-card">
                 <div class="rating">★★★★★</div>
-                <p>"The fastest DStv renewal service I have ever used. My decoder was active within 30 seconds of payment. Highly recommended!"</p>
+                <p>"The fastest DStv renewal service I have ever used. My decoder was active within 30 seconds of payment."</p>
                 <div class="customer">
                     <div class="avatar">MO</div>
                     <div><strong>Michael O.</strong><br>Lagos</div>
@@ -261,7 +780,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
             </div>
             <div class="testimonial-card">
                 <div class="rating">★★★★★</div>
-                <p>"Very reliable platform. No more queuing at payment centers. Signal Strength Inc has made my life so much easier."</p>
+                <p>"Very reliable platform. No more queuing at payment centers. Signal Strength Inc has made my life easier."</p>
                 <div class="customer">
                     <div class="avatar">AA</div>
                     <div><strong>Amara A.</strong><br>Abuja</div>
@@ -275,17 +794,9 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
                     <div><strong>Chidi I.</strong><br>Port Harcourt</div>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <div class="rating">★★★★★</div>
-                <p>"Best subscription platform in Nigeria. Simple, fast, and secure. I have told all my friends about Signal Strength."</p>
-                <div class="customer">
-                    <div class="avatar">FK</div>
-                    <div><strong>Fatima K.</strong><br>Kano</div>
-                </div>
-            </div>
         </div>
-        <div style="margin-top: 30px; font-size: 0.9rem;">
-            <strong>4.9 out of 5</strong> based on 500+ customer reviews
+        <div class="rating-summary">
+            ★ 4.9 out of 5 based on 500+ customer reviews
         </div>
     </div>
 </main>
@@ -309,7 +820,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
             </div>
         </div>
         <div class="copyright">
-            <p>© 2024 Signal Strength Inc. All rights reserved. | Terms & Conditions | Privacy Policy</p>
+            <p>© 2024 Signal Strength Inc. All rights reserved.</p>
         </div>
     </div>
 </footer>
@@ -319,11 +830,10 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
 </a>
 
 <script>
-    // ========== BACKEND CONNECTION ==========
+    // Backend connection
     const API_URL = 'https://signalstrengthinco.onrender.com';
     const ADMIN_PASSWORD = 'signal123';
-    // =========================================
-
+    
     let selectedPackage = null;
 
     // Package selection
@@ -341,12 +851,10 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
             };
             document.getElementById('orderForm').style.display = 'block';
             document.getElementById('packageSummary').innerHTML = `
-                <div class="selected-info">
-                    <div>
-                        <strong>${selectedPackage.service.toUpperCase()} - ${selectedPackage.name}</strong>
-                        <br>
-                        <small>Smartcard number will be entered below</small>
-                    </div>
+                <div>
+                    <strong>${selectedPackage.service.toUpperCase()} - ${selectedPackage.name}</strong>
+                    <br>
+                    <small>Smartcard number will be entered below</small>
                 </div>
                 <div class="amount">₦${parseInt(selectedPackage.price).toLocaleString()}</div>
             `;
@@ -433,7 +941,7 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
             document.getElementById('loading').classList.remove('active');
             document.getElementById('submitBtn').disabled = false;
             document.getElementById('result').className = 'result error';
-            document.getElementById('result').innerHTML = `Payment Error: ${error.message}. Please try again or contact support.`;
+            document.getElementById('result').innerHTML = 'Payment error: ' + error.message + '. Please try again.';
         }
     });
     
@@ -452,8 +960,6 @@ spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px 
         showAdmin();
     });
 </script>
-
-<script src="https://checkout.claritypay.com/v1/checkout.js"></script>
 
 </body>
 </html>
